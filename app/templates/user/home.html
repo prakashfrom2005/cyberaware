@@ -1,0 +1,14 @@
+<!-- home.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="home-container">
+  <div class="home-box">
+    <h1>Welcome to the Cybersecurity Awareness Portal</h1>
+    <p>Learn, play, and improve your cybersecurity skills.</p>
+    <div class="home-buttons">
+      <a href="{{ url_for('auth.login') }}" class="btn-login">Login</a>
+      <a href="{{ url_for('auth.register') }}" class="btn-register">Register</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="about-section">
+  <div class="about-container">
+    <h1>About <span>Learn2Secure</span></h1>
+    <p>
+      Learn2Secure is a learning and gamified platform designed to make Cybersecurity Awareness fun and interactive.
+      Users can explore modules, test their knowledge, earn points and badges, and track their progress through an engaging experience.
+    </p>
+
+    <h3>🎯 Our Mission</h3>
+    <p>
+      To empower users with practical cybersecurity knowledge through interactive learning and gamification.
+    </p>
+
+    <h3>💡 Why Choose Us?</h3>
+    <p>
+      Learn cybersecurity concepts, practice quizzes, and compete on leaderboards — all in one secure and intuitive platform.
+    </p>
+
+    <div class="about-btns">
+      <a href="{{ url_for('auth.register') }}" class="btn-start">🚀 Get Started</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

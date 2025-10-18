@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Quiz - {{ module.title }}{% endblock %}
+{% block content %}
+<h1>Quiz: {{ module.title }}</h1>
+<p class="sub">Answer all questions and submit.</p>
+
+<form method="POST" class="form" style="margin-top:20px">
+  {% for q in questions %}
+    <section class="panel">
+      <p><b>Q{{ loop.index }}.</b> {{ q.text }}</p>
+      <div style="margin-top:10px; display:grid; gap:8px">
+        {% for choice in q.choices %}
+          <label style="display:flex; gap:8px; align-items:center">
+            <input type="radio" name="q{{ q.id }}" value="{{ choice }}" required>
+            {{ choice }}
+          </label>
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+
+  <div style="position:sticky; bottom:10px; margin-top:18px; text-align:right">
+    <button type="submit" class="btn">Submit Quiz</button>
+  </div>
+</form>
+{% endblock %}

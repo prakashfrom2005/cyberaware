@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="dashboard-container">
+    <h2>📚 Questions for Module: {{ module.name }}</h2>
+
+    <a href="{{ url_for('admin.add_question', module_id=module.id) }}" class="btn">➕ Add Question</a>
+
+    {% if questions %}
+    <ul class="question-list">
+        {% for q in questions %}
+        <li>
+            <strong>{{ q.text }}</strong><br>
+            Options: {{ q.options }}<br>
+            ✅ Correct: {{ q.correct_option }}<br>
+
+            <a href="{{ url_for('admin.edit_question', question_id=q.id) }}" class="btn small">✏️ Edit</a>
+
+            <form method="POST" action="{{ url_for('admin.delete_question', question_id=q.id) }}" style="display:inline;">
+
+                <button type="submit" class="btn small danger" onclick="return confirm('Delete this question?')">🗑️ Delete</button>
+            </form>
+        </li>
+        <hr>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No questions added yet for this module.</p>
+    {% endif %}
+
+    <a href="{{ url_for('admin.manage_modules') }}" class="btn secondary">← Back to Modules</a>
+</div>
+{% endblock %}

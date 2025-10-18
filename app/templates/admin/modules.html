@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="dashboard-container">
+    <h2>📘 Manage Modules</h2>
+
+    <a href="{{ url_for('admin.add_module') }}" class="btn">➕ Add Module</a>
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for module in modules %}
+            <tr>
+                <td>{{ module.title }}</td>
+                <td>{{ module.description }}</td>
+                <td>
+                    <a href="{{ url_for('admin.edit_module', id=module.id) }}" class="btn small">✏️ Edit</a>
+
+                    <form action="{{ url_for('admin.delete_module', id=module.id) }}" method="POST" style="display:inline;">
+                        <button type="submit" class="btn small danger">🗑️ Delete</button>
+                    </form>
+
+                    <a href="{{ url_for('admin.manage_questions', module_id=module.id) }}" class="btn small">❓ Questions</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('admin.admin_home') }}" class="btn secondary">← Back to Admin Dashboard</a>
+</div>
+{% endblock %}

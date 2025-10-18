@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}{{ module.title }} - Module{% endblock %}
+{% block content %}
+<h1>{{ module.title }}</h1>
+<p class="sub">{{ module.description }}</p>
+<div class="module-content">
+  {{ html_content | safe }}
+</div>
+<a href="{{ url_for('quiz.take_quiz', module_id=module.id) }}" class="btn" style="margin-top:24px;display:inline-block;">Start Quiz</a>
+{% endblock %}

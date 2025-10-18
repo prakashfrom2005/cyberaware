@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="admin-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>Admin</h2>
+    <ul>
+      <li><a href="{{ url_for('admin.admin_home') }}" class="{% if request.endpoint=='admin.admin_home' %}active{% endif %}">Dashboard</a></li>
+      <li><a href="{{ url_for('admin.manage_modules') }}" class="{% if request.endpoint=='admin.manage_modules' %}active{% endif %}">Manage Modules</a></li>
+      <li><a href="{{ url_for('admin.badges') }}" class="{% if request.endpoint=='admin.badges' %}active{% endif %}">Manage Badges</a></li>
+    
+      <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main content -->
+  <section class="admin-content">
+    <h1>Welcome, Admin {{ current_user.username }}</h1>
+
+    <div class="admin-cards">
+      <div class="card">
+        <h3>Total Users</h3>
+        <p>{{ total_users }}</p>
+      </div>
+      <div class="card">
+        <h3>Total Modules</h3>
+        <p>{{ total_modules }}</p>
+      </div>
+      <div class="card">
+        <h3>Total Badges</h3>
+        <p>{{ total_badges }}</p>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

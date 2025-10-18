@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>➕ Add New Badge</h2>
+<form method="POST">
+  <label>Name</label>
+  <input name="name" required>
+  <label>Description</label>
+  <input name="description" required>
+  <label>Criteria</label>
+  <input name="criteria" required>
+  <label>Module</label>
+  <select name="module_id" required>
+    {% for module in modules %}
+      <option value="{{ module.id }}">{{ module.title }}</option>
+    {% endfor %}
+  </select>
+  <button type="submit" class="btn">Add Badge</button>
+</form>
+<a href="{{ url_for('admin.badges') }}">← Back</a>
+{% endblock %}

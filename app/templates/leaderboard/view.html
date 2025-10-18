@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Leaderboard - CyberSec{% endblock %}
+{% block content %}
+<h1>🏆 Leaderboard</h1>
+<p class="sub">See how you rank against others.</p>
+
+<table class="table" style="margin-top:20px">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>User</th>
+      <th>Points</th>
+      <th>Badges</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for u in users %}
+      <tr class="{% if u.id == current_user.id %}me{% endif %}">
+        <td>{{ loop.index }}</td>
+        <td>
+          {% if u.id == current_user.id %}
+            <b>{{ u.username }} (You)</b>
+          {% else %}
+            {{ u.username }}
+          {% endif %}
+        </td>
+        <td>{{ u.points }}</td>
+        <td>{{ u.badges|length }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

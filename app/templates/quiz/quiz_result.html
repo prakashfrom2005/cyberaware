@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Quiz Result - {{ module.title }}{% endblock %}
+{% block content %}
+<h1>Quiz Result</h1>
+<p>Your score: <b>{{ percent }}%</b></p>
+
+{% if earned_badges %}
+  <div class="badges">
+    <h2>🎉 You earned badge{{ earned_badges|length > 1 and 's' or '' }}!</h2>
+    {% for badge in earned_badges %}
+      <div class="badge">
+        {{ badge.name }}<br>
+        <span class="sub">{{ badge.description }}</span>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<a href="{{ url_for('user.dashboard') }}" class="btn" style="margin-top:24px;">Go to Dashboard</a>
+{% endblock %}

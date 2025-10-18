@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Add Question to: {{ module.title }}</h2>
+
+<form method="POST">
+  <label>Question:</label><br>
+  <textarea name="question_text" rows="4" cols="70" required></textarea><br><br>
+
+  <label>Option A:</label><br>
+  <input name="option_a" required><br>
+  <label>Option B:</label><br>
+  <input name="option_b" required><br>
+  <label>Option C:</label><br>
+  <input name="option_c" required><br>
+  <label>Option D:</label><br>
+  <input name="option_d" required><br><br>
+
+  <label>Correct Option (A/B/C/D):</label><br>
+  <input name="correct_option" pattern="[ABCDabcd]" required><br><br>
+
+  <button type="submit">Add Question</button>
+</form>
+
+<a href="{{ url_for('admin.manage_questions', module_id=module.id) }}">← Back</a>
+{% endblock %}

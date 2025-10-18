@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - CyberSec{% endblock %}
+{% block content %}
+<h1>Welcome, {{ current_user.username }}</h1>
+<p class="sub">Here’s your learning progress and achievements.</p>
+
+<div class="cardgrid" style="margin-top:22px">
+  <section class="panel span-6">
+    <h2>🎯 Your Stats</h2>
+    <p><b>Points:</b> {{ current_user.points }}</p>
+    <p><b>Completed Modules:</b> {{ completed|default(0) }}/{{ total|default(0) }}</p>
+    <p><b>Streak:</b> <span class="streak">{{ streak }}</span> 🔥</p>
+    <div class="progress" style="--val: {{ (progress_percent|default(0)) }}%">
+      <span>{{ (progress_percent|default(0)) }}%</span>
+    </div>
+  </section>
+
+  <section class="panel span-6">
+    <h2>🏅 Badges</h2>
+    <div class="badges">
+      {% for ub in current_user.badges %}
+        <span class="badge">{{ ub.badge.name }}</span>
+      {% else %}
+        <span class="sub">No badges yet</span>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="panel span-12">
+    <h2>📘 Recent Modules</h2>
+
+    {% if recent_modules %}
+      <div class="recent-modules">
+        {% for m in recent_modules %}
+          {% if m %}
+            <a href="{{ url_for('module.view_module', module_id=m.id) }}"
+               class="btn"
+               style="margin:6px 6px 0 0; display:inline-block;">
+              {{ m.title }}
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="sub">No recent modules completed.</p>
+    {% endif %}
+  </section>
+</div>
+{% endblock %}

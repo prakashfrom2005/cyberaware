@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Register - CyberSec{% endblock %}
+{% block content %}
+<div class="auth-wrap">
+  <section class="auth panel auth">
+    <h2>🧾 Create Account</h2>
+    <p class="sub" style="margin-bottom:14px">Join and start your security journey.</p>
+
+    <form method="POST" class="form">
+      <div class="form-row">
+        <label class="label">Username</label>
+        <input class="input" name="username" placeholder="yourname" required>
+      </div>
+
+      <div class="form-row">
+        <label class="label">Email</label>
+        <input class="input" name="email" type="email" placeholder="you@example.com" required>
+      </div>
+
+      <div class="form-row">
+        <label class="label">Password</label>
+        <input class="input" name="password" type="password" placeholder="••••••••" required>
+      </div>
+
+      <button type="submit" class="btn">Create Account</button>
+    </form>
+
+    <p class="sub" style="margin-top:14px">
+      Already have an account?
+      <a href="{{ url_for('auth.login') }}">Login</a>
+    </p>
+  </section>
+</div>
+{% endblock %}

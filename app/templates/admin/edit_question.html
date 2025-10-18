@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Edit Question</h2>
+<form method="POST">
+  <label>Question:</label><br>
+  <textarea name="question_text">{{ question.question_text }}</textarea><br><br>
+
+  <label>Option A:</label><br>
+  <input name="option_a" value="{{ question.option_a }}"><br>
+  <label>Option B:</label><br>
+  <input name="option_b" value="{{ question.option_b }}"><br>
+  <label>Option C:</label><br>
+  <input name="option_c" value="{{ question.option_c }}"><br>
+  <label>Option D:</label><br>
+  <input name="option_d" value="{{ question.option_d }}"><br><br>
+
+  <label>Correct Option (A/B/C/D):</label><br>
+  <input name="correct_option" value="{{ question.correct_option }}"><br><br>
+
+  <button type="submit">Update Question</button>
+</form>
+<a href="{{ url_for('admin.manage_questions', module_id=question.module_id) }}">← Back</a>
+{% endblock %}

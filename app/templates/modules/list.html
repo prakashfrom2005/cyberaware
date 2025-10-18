@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Modules - CyberSec{% endblock %}
+
+{% block content %}
+<h1>Learning Modules</h1>
+<p class="sub">Pick a topic to start learning.</p>
+
+<div class="cardgrid" style="margin-top:20px">
+  {% for m in modules %}
+  <section class="panel span-4">
+    <h2>{{ m.title }}</h2>
+
+    <!-- Display a trimmed preview of description or content -->
+    <p class="sub preview">
+      {{ m.description or m.content|striptags|truncate(120, True, '...') }}
+    </p>
+
+    
+
+    <a href="{{ url_for('module.view_module', module_id=m.id) }}" class="btn">Start</a>
+  </section>
+  {% endfor %}
+</div>
+{% endblock %}

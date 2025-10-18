@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>🛠️ Edit Badge</h2>
+<form method="POST">
+  <label>Name</label><br>
+  <input name="name" value="{{ badge.name }}"><br><br>
+
+  <label>Description</label><br>
+  <textarea name="description">{{ badge.description }}</textarea><br><br>
+
+  <label>Criteria</label><br>
+  <input name="criteria" value="{{ badge.criteria }}"><br><br>
+
+  <button type="submit">Update</button>
+</form>
+<a href="{{ url_for('admin.manage_badges') }}">← Back</a>
+{% endblock %}

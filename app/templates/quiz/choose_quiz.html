@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Choose a Quiz - CyberSec Learn{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>📝 Choose a Quiz</h2>
+    <p>Select a module to take its quiz.</p>
+
+    <div class="row">
+        {% for module in modules %}
+        <div class="col-md-4">
+            <div class="card shadow-sm mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ module.title }}</h5>
+                    <p class="card-text">{{ module.description }}</p>
+                    <!-- ✅ FIX: Passing module_id here -->
+                    <a href="{{ url_for('quiz.take_quiz', module_id=module.id) }}" class="btn btn-success">
+                        Start Quiz
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

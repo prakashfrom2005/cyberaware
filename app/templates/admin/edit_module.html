@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Edit Module - Admin{% endblock %}
+{% block content %}
+<h1>Edit Module</h1>
+<form method="POST" class="form">
+  <div class="form-row">
+    <label class="label">Title</label>
+    <input class="input" name="title" value="{{ module.title }}" required>
+  </div>
+  <div class="form-row">
+    <label class="label">Description</label>
+    <input class="input" name="description" value="{{ module.description }}" required>
+  </div>
+  <div class="form-row">
+    <label class="label">Content</label>
+    <textarea class="input" name="content" rows="10" required>{{ module.content }}</textarea>
+  </div>
+  <button type="submit" class="btn">Update Module</button>
+</form>
+{% endblock %}
